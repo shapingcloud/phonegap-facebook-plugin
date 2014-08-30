@@ -68,7 +68,7 @@ public class ConnectPlugin extends CordovaPlugin {
 
 		// Init logger
 		logger = AppEventsLogger.newLogger(cordova.getActivity());
-
+		Settings.setPlatformCompatibilityEnabled(true);
 		int appResId = cordova.getActivity().getResources().getIdentifier("fb_app_id", "string", cordova.getActivity().getPackageName());
 		applicationId = cordova.getActivity().getString(appResId);
 
