@@ -111,7 +111,11 @@ public class ConnectPlugin extends CordovaPlugin {
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 		super.onActivityResult(requestCode, resultCode, intent);
 		Log.d(TAG, "activity result in plugin");
-		Session.getActiveSession().onActivityResult(cordova.getActivity(), requestCode, resultCode, intent);
+		//Session.getActiveSession().onActivityResult(cordova.getActivity(), requestCode, resultCode, intent);
+		Session session = Session.getActiveSession();
+		if (session != null && (loginContext != null || session.isOpened())) {
+			session.onActivityResult(cordova.getActivity(), requestCode, resultCode, intent);
+		}
 	}
 
 	@Override
